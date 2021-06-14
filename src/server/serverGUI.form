@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="server.serverGUI">
+  <grid id="27dc6" binding="server" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="646" height="468"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="2a08c" binding="Home" layout-manager="GridLayoutManager" row-count="10" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="25" left="25" bottom="25" right="25"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="b724e" class="javax.swing.JTextField" binding="serverIpTextField">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <enabled value="true"/>
+              <horizontalAlignment value="0"/>
+              <text value="127.0.0.1"/>
+            </properties>
+          </component>
+          <component id="48a5a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Server IP"/>
+            </properties>
+          </component>
+          <component id="aef7e" class="javax.swing.JTextField" binding="deleteTextField1">
+            <constraints>
+              <grid row="2" column="1" row-span="2" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="30"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="eaeb0" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="DELETE FILE"/>
+            </properties>
+          </component>
+          <component id="19f6e" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="OR DIRECTORY"/>
+            </properties>
+          </component>
+          <component id="d3b8a" class="javax.swing.JTextField" binding="createTextField">
+            <constraints>
+              <grid row="5" column="1" row-span="2" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="30"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="d417f" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="CREATE"/>
+            </properties>
+          </component>
+          <component id="7c150" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="DIRECTORY"/>
+            </properties>
+          </component>
+          <component id="8c872" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="1" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="UPLOAD"/>
+            </properties>
+          </component>
+          <component id="eb7f2" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="FILE"/>
+            </properties>
+          </component>
+          <component id="80a13" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="UserName"/>
+            </properties>
+          </component>
+          <component id="f620d" class="javax.swing.JTextField" binding="usernameTextField">
+            <constraints>
+              <grid row="1" column="5" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <enabled value="true"/>
+              <horizontalAlignment value="0"/>
+              <text value="ADMIN"/>
+            </properties>
+          </component>
+          <scrollpane id="85c3f" binding="StorageData">
+            <constraints>
+              <grid row="9" column="0" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="500" height="150"/>
+              </grid>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <horizontalScrollBarPolicy value="31"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </scrollpane>
+          <component id="9d594" class="javax.swing.JButton" binding="deleteButton">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <borderPainted value="true"/>
+              <contentAreaFilled value="true"/>
+              <focusPainted value="true"/>
+              <focusable value="true"/>
+              <requestFocusEnabled value="true"/>
+              <text value="DELETE"/>
+            </properties>
+          </component>
+          <component id="cc770" class="javax.swing.JButton" binding="RESETButton1" default-binding="true">
+            <constraints>
+              <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="RESET"/>
+            </properties>
+          </component>
+          <component id="e3c43" class="javax.swing.JButton" binding="createButton">
+            <constraints>
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="CREATE"/>
+            </properties>
+          </component>
+          <component id="9bd20" class="javax.swing.JButton" binding="RESETButton" default-binding="true">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="RESET"/>
+            </properties>
+          </component>
+          <component id="4e471" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="DOWNLOAD"/>
+            </properties>
+          </component>
+          <component id="7539d" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="FILE"/>
+            </properties>
+          </component>
+          <component id="8f037" class="javax.swing.JTextField" binding="downloadTextField">
+            <constraints>
+              <grid row="2" column="5" row-span="2" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="30"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="17d75" class="javax.swing.JButton" binding="downloadFileButton">
+            <constraints>
+              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="DOWNLOAD"/>
+            </properties>
+          </component>
+          <component id="b09ab" class="javax.swing.JButton" binding="RESETButton2" default-binding="true">
+            <constraints>
+              <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="RESET"/>
+            </properties>
+          </component>
+          <component id="85c96" class="javax.swing.JButton" binding="selectFileButton">
+            <constraints>
+              <grid row="5" column="5" row-span="2" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="20" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="SELECT"/>
+            </properties>
+          </component>
+          <hspacer id="372cb">
+            <constraints>
+              <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="30" height="-1"/>
+              </grid>
+            </constraints>
+          </hspacer>
+          <vspacer id="dc425">
+            <constraints>
+              <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <preferred-size width="30" height="-1"/>
+              </grid>
+            </constraints>
+          </vspacer>
+          <component id="742fb" class="javax.swing.JButton" binding="uploadFileButton">
+            <constraints>
+              <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="UPLOAD"/>
+            </properties>
+          </component>
+          <component id="b8c88" class="javax.swing.JButton" binding="RESETButton4" default-binding="true">
+            <constraints>
+              <grid row="7" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="RESET"/>
+            </properties>
+          </component>
+          <component id="11e62" class="javax.swing.JButton" binding="STARTButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="START"/>
+            </properties>
+          </component>
+          <component id="51e97" class="javax.swing.JButton" binding="STOPButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <enabled value="false"/>
+              <text value="STOP"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
