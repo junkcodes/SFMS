@@ -44,9 +44,10 @@ public class Home {
 
 
 
-    public Home() {
+    public Home(String username) {
         cwd = new ArrayList<String>();
-        cwd.add(usernameTextField.getText());
+        usernameTextField.setText(username);
+        cwd.add(username);
         WrapLayout experimentLayout = new WrapLayout();
         Sotrage = new JPanel();
         Sotrage.setLayout(experimentLayout);
@@ -61,6 +62,8 @@ public class Home {
                     try {
                         clientDataOutputStream.writeUTF("create");
                         clientDataOutputStream.flush();
+                        String s = String.join("/",cwd.toArray(new String[cwd.size()]))+"/"+createTextField.getText();
+                        System.out.println(s);
                         clientDataOutputStream.writeUTF(String.join("/",cwd.toArray(new String[cwd.size()]))+"/"+createTextField.getText());
                         clientDataOutputStream.flush();
                         String response = clientDataInputStream.readUTF();
@@ -249,10 +252,10 @@ public class Home {
         this.clientDataOutputStream = dos;
 
     }
-    public void setUserName(String username){
-        this.usernameTextField.setText(username);
-        this.serverIpTextField.setText(clientSocket.getInetAddress().toString().split("/")[1]);
-    }
+    /*public void setUserName(String username){
+        usernameTextField.setText(username);
+        serverIpTextField.setText(clientSocket.getInetAddress().toString().split("/")[1]);
+    }*/
 
     public void readStorage(String path){
         try {

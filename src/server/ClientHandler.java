@@ -77,7 +77,6 @@ class ClientHandler extends Thread {
                 else if(received.equals("read")){
                     received = dis.readUTF();
                     File[] details = new File(mainPath+"/storage/"+received).listFiles();
-                    System.out.println(details.length);
                     for(int i=0; i< details.length;i++){
                         if(details[i].isDirectory()){
                             dos.writeUTF("folder");

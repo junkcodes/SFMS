@@ -113,7 +113,7 @@
           <editable value="false"/>
           <enabled value="true"/>
           <horizontalAlignment value="0"/>
-          <text value="rezwan"/>
+          <text value=""/>
         </properties>
       </component>
       <scrollpane id="10e20" binding="StorageData">

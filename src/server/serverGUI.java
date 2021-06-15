@@ -260,6 +260,7 @@ public class serverGUI {
                 files.add(details[i].getName());
             }
         }
+
         Sotrage.removeAll();
         Sotrage.revalidate();
         Sotrage.repaint();

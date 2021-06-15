@@ -25,35 +25,42 @@ public class Registration {
             public void actionPerformed(ActionEvent actionEvent) {
                 String username = usernameReg.getText();
                 String password = new String(passwordReg.getPassword());
-                try {
-                    clientDataOutputStream.writeUTF("registration");
-                    clientDataOutputStream.flush();
-                    clientDataOutputStream.writeUTF(username);
-                    clientDataOutputStream.flush();
-                    String response = clientDataInputStream.readUTF();
-                    if(response.equals("valid")) {
-                        clientDataOutputStream.writeUTF(password);
-                        clientDataOutputStream.flush();
-                        JOptionPane.showMessageDialog(Registration, "Successfully Registered");
-                    }
-                    else if(response.equals("duplicate")){
-                        JOptionPane.showMessageDialog(Registration, "UserName Already Exists!");
-                    }
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(Registration,"Connection Failure!");
+                if(username.equals("")){
+                    JOptionPane.showMessageDialog(Registration, "Enter UserName!");
+                }
+                else if(password.equals("")) {
+                    JOptionPane.showMessageDialog(Registration, "Enter Password!");
+                }
+                else if(!username.equals("") && !password.equals("")) {
                     try {
-                        clientSocket.close();
-                        clientDataOutputStream.close();
-                        clientDataOutputStream.close();
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
+                        clientDataOutputStream.writeUTF("registration");
+                        clientDataOutputStream.flush();
+                        clientDataOutputStream.writeUTF(username);
+                        clientDataOutputStream.flush();
+                        String response = clientDataInputStream.readUTF();
+                        if (response.equals("valid")) {
+                            clientDataOutputStream.writeUTF(password);
+                            clientDataOutputStream.flush();
+                            JOptionPane.showMessageDialog(Registration, "Successfully Registered");
+                        } else if (response.equals("duplicate")) {
+                            JOptionPane.showMessageDialog(Registration, "UserName Already Exists!");
+                        }
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(Registration, "Connection Failure!");
+                        try {
+                            clientSocket.close();
+                            clientDataOutputStream.close();
+                            clientDataOutputStream.close();
+                        } catch (IOException ioException) {
+                            ioException.printStackTrace();
+                        }
+                        Welcome welcome = new Welcome();
+                        frame.setContentPane(welcome.getWelcome());
+                        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        frame.pack();
+                        frame.setVisible(true);
+                        welcome.setFrame(frame);
                     }
-                    Welcome welcome = new Welcome();
-                    frame.setContentPane(welcome.getWelcome());
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.pack();
-                    frame.setVisible(true);
-                    welcome.setFrame(frame);
                 }
             }
         });
