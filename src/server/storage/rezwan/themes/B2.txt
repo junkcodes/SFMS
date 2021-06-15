@@ -1,0 +1,6 @@
+a)
+i. stationary flow: A flow in which the velocity of the fluid at a particular fixed point does not change with time.
+ii. polytropic gas: A polytropic gas is a gas that obeys the thermodynamic polytropic process, which is p(V)^n = C.
+iii. specific enthalpy: The specific enthalpy of a uniform system is defined as h = H/m where m is the mass of the system.
+
+

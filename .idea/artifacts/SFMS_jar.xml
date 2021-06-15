@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SFMS:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SFMS_jar</output-path>
+    <root id="archive" name="SFMS.jar">
+      <element id="module-output" name="SFMS" />
+    </root>
+  </artifact>
+</component>
