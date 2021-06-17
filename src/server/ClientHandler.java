@@ -5,8 +5,9 @@ import java.net.Socket;
 import java.util.List;
 
 class ClientHandler extends Thread {
-    private List<String> username,password;
-    private String mainPath;
+    private final List<String> username;
+    private final List<String> password;
+    private final String mainPath;
     final DataInputStream dis;
     final DataOutputStream dos;
     final Socket s;
@@ -187,7 +188,14 @@ class ClientHandler extends Thread {
                 deleteDirOrFile(files[i]);
             }
         }
-        return name.delete();
+        String path = "";
+        try {
+            path = name.getCanonicalPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File absPath = new File(path);
+        return absPath.delete();
     }
     public void disconnectClient(){
         try {
