@@ -211,7 +211,7 @@ public class Home {
                         clientDataOutputStream.flush();
                         String response = clientDataInputStream.readUTF();
                         if(response.equals("exists")){
-                            OutputStream outputFile = new FileOutputStream("/tmp/"+downloadTextField.getText());
+                            OutputStream outputFile = new FileOutputStream("/downloads/"+downloadTextField.getText());
                             int size = (int)clientDataInputStream.readLong();
                             byte[] buffer = new byte[size];
                             int read, totalByteRead = 0;
@@ -221,7 +221,7 @@ public class Home {
                                 if(totalByteRead == size)break;
                             }
                             outputFile.close();
-                            JOptionPane.showMessageDialog(Home,"File Downloaded at /tmp");
+                            JOptionPane.showMessageDialog(Home,"File Downloaded at /downloads");
                         }
                         else if(response.equals("notexists")){
                             JOptionPane.showMessageDialog(Home,"File Doesn't Exist!");

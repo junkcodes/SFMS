@@ -102,7 +102,7 @@ public class serverGUI {
                         readStorage(String.join("/",cwd.toArray(new String[cwd.size()])));
                         if(cwd.size() == 1){
                             deleteUser(mainPath+"/login",deleteTextField1.getText());
-                            JOptionPane.showMessageDialog(Home,"User :"+deleteTextField1.getText()+"Deleted!");
+                            JOptionPane.showMessageDialog(Home,"User :"+deleteTextField1.getText()+" Deleted!");
                         }
                     }
                     else{
@@ -144,7 +144,7 @@ public class serverGUI {
                             FileInputStream fis = new FileInputStream(newFile);
                             BufferedInputStream bis = new BufferedInputStream(fis);
                             DataInputStream tdis = new DataInputStream(bis);
-                            OutputStream outputFile = new FileOutputStream("/tmp/"+downloadTextField.getName());
+                            OutputStream outputFile = new FileOutputStream("/downloads/"+downloadTextField.getName());
                             int read;
                             while((read = tdis.read(byteArray)) != -1 ){
                                 outputFile.write(byteArray, 0, read);
@@ -153,7 +153,7 @@ public class serverGUI {
                             tdis.close();
                             bis.close();
                             fis.close();
-                            JOptionPane.showMessageDialog(Home,"File Downloaded to /tmp/");
+                            JOptionPane.showMessageDialog(Home,"File Downloaded to /downloads");
                         }
                         else{
                             JOptionPane.showMessageDialog(Home,"File Doesn't Exist!");
@@ -469,6 +469,7 @@ public class serverGUI {
         }
         JFrame frame = new JFrame("Server");
         File servDir = new File("server");
+        File downloadsDir = new File("downloads");
         if(!servDir.exists()) {
             servDir.mkdir();
             File credDir = new File("server/login");
@@ -483,6 +484,9 @@ public class serverGUI {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        if(!downloadsDir.exists()){
+            downloadsDir.mkdir();
         }
         serverGUI server= new serverGUI();
         server.readStorage(String.join("/", server.cwd.toArray(new String[server.cwd.size()])));

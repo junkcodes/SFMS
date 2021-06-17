@@ -100,6 +100,10 @@ public class Welcome {
 
 
         JFrame frame = new JFrame("Welcome");
+        File downloadsDir = new File("downloads");
+        if(!downloadsDir.exists()){
+            downloadsDir.mkdir();
+        }
         Welcome welcome = new Welcome();
         frame.setContentPane(welcome.Welcome);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
