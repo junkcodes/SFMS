@@ -143,12 +143,16 @@ public class serverGUI {
                             byte[] byteArray = new byte[(int) newFile.length()];
                             FileInputStream fis = new FileInputStream(newFile);
                             BufferedInputStream bis = new BufferedInputStream(fis);
-                            DataInputStream dis = new DataInputStream(bis);
+                            DataInputStream tdis = new DataInputStream(bis);
                             OutputStream outputFile = new FileOutputStream("/tmp/"+downloadTextField.getName());
                             int read;
-                            while((read = dis.read(byteArray)) != -1 ){
+                            while((read = tdis.read(byteArray)) != -1 ){
                                 outputFile.write(byteArray, 0, read);
                             }
+                            outputFile.close();
+                            tdis.close();
+                            bis.close();
+                            fis.close();
                             JOptionPane.showMessageDialog(Home,"File Downloaded to /tmp/");
                         }
                         else{
@@ -174,12 +178,16 @@ public class serverGUI {
                             byte[] byteArray = new byte[(int) selectedFile.length()];
                             FileInputStream fis = new FileInputStream(selectedFile);
                             BufferedInputStream bis = new BufferedInputStream(fis);
-                            DataInputStream dis = new DataInputStream(bis);
+                            DataInputStream tdis = new DataInputStream(bis);
                             OutputStream outputFile = new FileOutputStream(newFile);
                             int read;
-                            while((read = dis.read(byteArray)) != -1 ){
+                            while((read = tdis.read(byteArray)) != -1 ){
                                 outputFile.write(byteArray, 0, read);
                             }
+                            outputFile.close();
+                            tdis.close();
+                            bis.close();
+                            fis.close();
                             JOptionPane.showMessageDialog(Home,"File Uploaded!");
                             readStorage(String.join("/",cwd.toArray(new String[cwd.size()])));
                             selectFileButton.setText("SELECT");
@@ -403,7 +411,14 @@ public class serverGUI {
                 deleteDirOrFile(files[i]);
             }
         }
-        return name.delete();
+        String path = "";
+        try {
+            path = name.getCanonicalPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File absPath = new File(path);
+        return absPath.delete();
     }
     public JButton backButton(){
         JButton btn = new JButton(new ImageIcon("res/aaa.png"));

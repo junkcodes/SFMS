@@ -136,6 +136,7 @@ class ClientHandler extends Thread {
                             totalByteRead += read;
                             if (totalByteRead == size) break;
                         }
+                        outputFile.close();
                     }
                     else {
                         dos.writeUTF("exists");
@@ -145,21 +146,24 @@ class ClientHandler extends Thread {
                 else if(received.equals("download")){
                     received = dis.readUTF();
                     File inputFile = new File(mainPath+"/storage/"+received);
-                    System.out.println(inputFile);
                     if(inputFile.exists()){
                         dos.writeUTF("exists");
                         dos.flush();
                         byte[] byteArray = new byte[(int) inputFile.length()];
                         FileInputStream fis = new FileInputStream(inputFile);
                         BufferedInputStream bis = new BufferedInputStream(fis);
-                        DataInputStream dis = new DataInputStream(bis);
+                        DataInputStream tdis = new DataInputStream(bis);
                         dos.writeLong(inputFile.length());
                         dos.flush();
                         int read;
-                        while((read = dis.read(byteArray)) != -1 ){
+                        while((read = tdis.read(byteArray)) != -1 ){
                             dos.write(byteArray, 0, read);
                         }
                         dos.flush();
+                        tdis.close();
+                        bis.close();
+                        fis.close();
+
                     }
                     else{
                         dos.writeUTF("notexists");
