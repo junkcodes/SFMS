@@ -166,14 +166,17 @@ public class Home {
                             byte[] byteArray = new byte[(int) selectedFile.length()];
                             FileInputStream fis = new FileInputStream(selectedFile);
                             BufferedInputStream bis = new BufferedInputStream(fis);
-                            DataInputStream dis = new DataInputStream(bis);
+                            DataInputStream tdis = new DataInputStream(bis);
                             clientDataOutputStream.writeLong(selectedFile.length());
                             clientDataOutputStream.flush();
                             int read;
-                            while ((read = dis.read(byteArray)) != -1) {
+                            while ((read = tdis.read(byteArray)) != -1) {
                                 clientDataOutputStream.write(byteArray, 0, read);
                             }
                             clientDataOutputStream.flush();
+                            tdis.close();
+                            bis.close();
+                            fis.close();
                             JOptionPane.showMessageDialog(Home, "File Uploaded!");
                             readStorage(String.join("/", cwd.toArray(new String[cwd.size()])));
                             selectFileButton.setText("SELECT");
@@ -208,7 +211,7 @@ public class Home {
                         clientDataOutputStream.flush();
                         String response = clientDataInputStream.readUTF();
                         if(response.equals("exists")){
-                            OutputStream outputFile = new FileOutputStream("/tmp/"+downloadTextField.getText());
+                            OutputStream outputFile = new FileOutputStream("downloads/"+downloadTextField.getText());
                             int size = (int)clientDataInputStream.readLong();
                             byte[] buffer = new byte[size];
                             int read, totalByteRead = 0;
@@ -217,7 +220,8 @@ public class Home {
                                 totalByteRead += read;
                                 if(totalByteRead == size)break;
                             }
-                            JOptionPane.showMessageDialog(Home,"File Downloaded at /tmp");
+                            outputFile.close();
+                            JOptionPane.showMessageDialog(Home,"File Downloaded at /downloads");
                         }
                         else if(response.equals("notexists")){
                             JOptionPane.showMessageDialog(Home,"File Doesn't Exist!");

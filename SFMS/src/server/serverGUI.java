@@ -102,7 +102,7 @@ public class serverGUI {
                         readStorage(String.join("/",cwd.toArray(new String[cwd.size()])));
                         if(cwd.size() == 1){
                             deleteUser(mainPath+"/login",deleteTextField1.getText());
-                            JOptionPane.showMessageDialog(Home,"User :"+deleteTextField1.getText()+"Deleted!");
+                            JOptionPane.showMessageDialog(Home,"User :"+deleteTextField1.getText()+" Deleted!");
                         }
                     }
                     else{
@@ -138,18 +138,22 @@ public class serverGUI {
             public void actionPerformed(ActionEvent actionEvent) {
                 if(!downloadTextField.getText().equals("")){
                     try {
-                        File newFile = new File(String.join("/",cwd.toArray(new String[cwd.size()]))+"/"+downloadTextField.getName());
+                        File newFile = new File(String.join("/",cwd.toArray(new String[cwd.size()]))+"/"+downloadTextField.getText());
                         if(newFile.exists()){
                             byte[] byteArray = new byte[(int) newFile.length()];
                             FileInputStream fis = new FileInputStream(newFile);
                             BufferedInputStream bis = new BufferedInputStream(fis);
-                            DataInputStream dis = new DataInputStream(bis);
-                            OutputStream outputFile = new FileOutputStream("/tmp/"+downloadTextField.getName());
+                            DataInputStream tdis = new DataInputStream(bis);
+                            OutputStream outputFile = new FileOutputStream("downloads/"+downloadTextField.getText());
                             int read;
-                            while((read = dis.read(byteArray)) != -1 ){
+                            while((read = tdis.read(byteArray)) != -1 ){
                                 outputFile.write(byteArray, 0, read);
                             }
-                            JOptionPane.showMessageDialog(Home,"File Downloaded to /tmp/");
+                            outputFile.close();
+                            tdis.close();
+                            bis.close();
+                            fis.close();
+                            JOptionPane.showMessageDialog(Home,"File Downloaded to /downloads");
                         }
                         else{
                             JOptionPane.showMessageDialog(Home,"File Doesn't Exist!");
@@ -174,12 +178,16 @@ public class serverGUI {
                             byte[] byteArray = new byte[(int) selectedFile.length()];
                             FileInputStream fis = new FileInputStream(selectedFile);
                             BufferedInputStream bis = new BufferedInputStream(fis);
-                            DataInputStream dis = new DataInputStream(bis);
+                            DataInputStream tdis = new DataInputStream(bis);
                             OutputStream outputFile = new FileOutputStream(newFile);
                             int read;
-                            while((read = dis.read(byteArray)) != -1 ){
+                            while((read = tdis.read(byteArray)) != -1 ){
                                 outputFile.write(byteArray, 0, read);
                             }
+                            outputFile.close();
+                            tdis.close();
+                            bis.close();
+                            fis.close();
                             JOptionPane.showMessageDialog(Home,"File Uploaded!");
                             readStorage(String.join("/",cwd.toArray(new String[cwd.size()])));
                             selectFileButton.setText("SELECT");
@@ -403,7 +411,14 @@ public class serverGUI {
                 deleteDirOrFile(files[i]);
             }
         }
-        return name.delete();
+        String path = "";
+        try {
+            path = name.getCanonicalPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File absPath = new File(path);
+        return absPath.delete();
     }
     public JButton backButton(){
         JButton btn = new JButton(new ImageIcon("res/aaa.png"));
@@ -454,6 +469,7 @@ public class serverGUI {
         }
         JFrame frame = new JFrame("Server");
         File servDir = new File("server");
+        File downloadsDir = new File("downloads");
         if(!servDir.exists()) {
             servDir.mkdir();
             File credDir = new File("server/login");
@@ -468,6 +484,9 @@ public class serverGUI {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        if(!downloadsDir.exists()){
+            downloadsDir.mkdir();
         }
         serverGUI server= new serverGUI();
         server.readStorage(String.join("/", server.cwd.toArray(new String[server.cwd.size()])));
