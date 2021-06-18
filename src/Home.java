@@ -211,7 +211,7 @@ public class Home {
                         clientDataOutputStream.flush();
                         String response = clientDataInputStream.readUTF();
                         if(response.equals("exists")){
-                            OutputStream outputFile = new FileOutputStream("/downloads/"+downloadTextField.getText());
+                            OutputStream outputFile = new FileOutputStream("downloads/"+downloadTextField.getText());
                             int size = (int)clientDataInputStream.readLong();
                             byte[] buffer = new byte[size];
                             int read, totalByteRead = 0;

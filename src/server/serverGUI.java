@@ -138,13 +138,13 @@ public class serverGUI {
             public void actionPerformed(ActionEvent actionEvent) {
                 if(!downloadTextField.getText().equals("")){
                     try {
-                        File newFile = new File(String.join("/",cwd.toArray(new String[cwd.size()]))+"/"+downloadTextField.getName());
+                        File newFile = new File(String.join("/",cwd.toArray(new String[cwd.size()]))+"/"+downloadTextField.getText());
                         if(newFile.exists()){
                             byte[] byteArray = new byte[(int) newFile.length()];
                             FileInputStream fis = new FileInputStream(newFile);
                             BufferedInputStream bis = new BufferedInputStream(fis);
                             DataInputStream tdis = new DataInputStream(bis);
-                            OutputStream outputFile = new FileOutputStream("/downloads/"+downloadTextField.getName());
+                            OutputStream outputFile = new FileOutputStream("downloads/"+downloadTextField.getText());
                             int read;
                             while((read = tdis.read(byteArray)) != -1 ){
                                 outputFile.write(byteArray, 0, read);
